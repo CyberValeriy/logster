@@ -25,7 +25,8 @@ services:
       - CLICKHOUSE_PASSWORD=password
       - CLICKHOUSE_DB=default
     
-  redis:
+  #Todo: switch to the cluster instead...
+  redis: 
     image: redis:7-alpine
     ports:
       - "6379:6379"

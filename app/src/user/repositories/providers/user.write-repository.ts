@@ -5,13 +5,8 @@ import { IUserEntity, IUserWriteRepository } from '../../interfaces';
 import { UserBaseRepository } from './user.base-repository';
 import { Model } from 'mongoose';
 
-export class UserWriteRepository
-  extends UserBaseRepository
-  implements IUserWriteRepository
-{
-  public constructor(
-    @InjectModel(UserEntity.name) private userModel: Model<UserEntity>,
-  ) {
+export class UserWriteRepository extends UserBaseRepository implements IUserWriteRepository {
+  public constructor(@InjectModel(UserEntity.name) private userModel: Model<UserEntity>) {
     super();
   }
 

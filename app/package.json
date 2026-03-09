@@ -22,7 +22,12 @@
     "migrate:status": "ts-node node_modules/.bin/migrate-mongo status -f migrate-mongo-config.ts",
     "migrate:up": "ts-node node_modules/.bin/migrate-mongo up -f migrate-mongo-config.ts",
     "migrate:down": "ts-node node_modules/.bin/migrate-mongo down -f migrate-mongo-config.ts",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@clickhouse/client": "^1.18.1",

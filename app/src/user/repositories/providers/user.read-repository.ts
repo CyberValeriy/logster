@@ -1,9 +1,9 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { UserBaseRepository } from './user.base-repository';
-import { UserEntity } from '../schemas/user.schema';
+import { UserEntity } from '../../schemas/user.schema';
 import { Model } from 'mongoose';
-import { IUserReadRepository } from '../interfaces/repositories/user.read-repository.interface';
-import { IUserEntity } from '../interfaces/entities';
+import { IUserReadRepository } from '../../interfaces/repositories';
+import { IUserEntity } from '../../interfaces/entities';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()

@@ -1,6 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 import { ClickHouseClient, createClient } from '@clickhouse/client';
-import { getEnvConfig } from '../shared';
+import { getEnvConfig } from '../../shared';
 
 @Global()
 @Module({

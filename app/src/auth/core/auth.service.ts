@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { ConflictException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { CustomJwtService } from '../custom-jwt/custom-jwt.service';
 import { BcryptService } from '../../shared/helpers/bcrypt';
 import { IUserReadService } from '../../user/interfaces/services';
@@ -11,10 +11,11 @@ import { LoginDto } from './dto/login.dto';
 @Injectable()
 export class AuthService {
   public constructor(
-    private readonly userReadService: IUserReadService,
-    private readonly customJwtService: CustomJwtService,
-    private readonly userWriteService: IUserWriteService,
     private readonly bcryptService: BcryptService,
+    private readonly customJwtService: CustomJwtService,
+
+    @Inject(IUserReadService) private readonly userReadService: IUserReadService,
+    @Inject(IUserWriteService) private readonly userWriteService: IUserWriteService,
   ) {}
 
   public async signup(dto: SignupDto): Promise<{ accessToken: string }> {

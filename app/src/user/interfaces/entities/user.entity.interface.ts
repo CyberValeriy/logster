@@ -4,3 +4,13 @@ export class IUserEntity {
   username: string;
   createdAt: Date;
 }
+
+export interface IUserEntityWithPassword extends IUserEntity {
+  password: string;
+}
+
+export interface ICreateUserInput {
+  email: string;
+  username: string;
+  password: string;
+}

@@ -1,3 +1,3 @@
 export default () => {
-  console.log('Global teardown of test containers');
+  console.log('Global teardown');
 };

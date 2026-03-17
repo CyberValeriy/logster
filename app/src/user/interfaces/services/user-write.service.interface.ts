@@ -1,7 +1,7 @@
-import { IUserEntity } from '../entities';
+import { ICreateUserInput, IUserEntity } from '../entities';
 
 export interface IUserWriteService {
-  createUser(user: IUserEntity): Promise<IUserEntity>;
+  createUser(input: ICreateUserInput): Promise<IUserEntity>;
 }
 
 export const IUserWriteService = Symbol('IUserWriteService');

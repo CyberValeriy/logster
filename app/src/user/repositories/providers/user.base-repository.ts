@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { IUserEntity } from '../interfaces/entities';
-import { UserEntity } from '../schemas/user.schema';
+import { IUserEntity, IUserEntityWithPassword } from '../../interfaces/entities';
+import { UserEntity } from '../../schemas/user.schema';
 
 @Injectable()
 export class UserBaseRepository {
@@ -10,6 +10,13 @@ export class UserBaseRepository {
       email: entity.email,
       username: entity.username,
       createdAt: entity.createdAt,
+    };
+  }
+
+  public serializeWithPassword(entity: UserEntity): IUserEntityWithPassword {
+    return {
+      ...this.serialize(entity),
+      password: entity.password,
     };
   }
 }

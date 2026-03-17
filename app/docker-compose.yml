@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes: 
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes: 
+      - clickhouse_data:/var/lib/clickhouse
+      - ./clickhouse-migrations:/docker-entrypoint-initdb.d:ro
+    environment:
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=password
+      - CLICKHOUSE_DB=default
+    
+  #Todo: switch to the cluster instead...
+  redis: 
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+
+volumes:
+  mongo_data:
+  clickhouse_data:
